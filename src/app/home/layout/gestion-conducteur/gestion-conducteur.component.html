@@ -1,0 +1,69 @@
+<!--start-top-serch-->
+<div id="search">
+  <input type="text" [(ngModel)]="args" placeholder="Recherche..."/>
+  <button type="submit" class="tip-bottom" title="Search" ><i class="icon-search icon-white"></i></button>
+</div>
+<!--close-top-serch-->
+<!--main-container-part-->
+<div id="content">
+
+
+  <div class="container-fluid">
+    <hr>
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-th"></i> </span>
+            <h5>Gestion Conducteur</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <table class="table table-bordered table-striped">
+              <thead>
+              <tr>
+
+
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Adresse</th>
+                <th>NumTel</th>
+                <th>CIN</th>
+                <th>permis</th>
+                <th>remove</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr class="odd gradeX" *ngFor="let c of conducteurs | serch : args">
+
+                <td>{{c.Nom}}</td>
+                <td>{{c.Prenom}}</td>
+                <td class="center">{{c.Email}}</td>
+                <td>{{c.Adresse}}</td>
+
+                <td class="center">{{c.NumTel}}</td>
+                <td class="center">{{c.CIN}}</td>
+                <td class="center"><img src="assets\img\permis.jpg" height="100" width="100"></td>
+                <td><a class="btn btn-danger" href="#myAlert" data-toggle="modal">Supprimer</a></td>
+                <div id="myAlert" class="modal hide">
+                  <div class="modal-header">
+                    <button data-dismiss="modal" class="close" type="button">×</button>
+                    <h3>Supprimer</h3>
+                  </div>
+                  <div class="modal-body">
+                    <p>Vouler vous supprimer cet conducteur</p>
+                  </div>
+                  <div class="modal-footer"> <a data-dismiss="modal" class="btn btn-primary" (click)="deleteConducteurs(c._id)" >Confirm</a> <a data-dismiss="modal" class="btn" href="#">Cancel</a> </div>
+                </div>
+              </tr>
+
+              </tbody>
+            </table>
+
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

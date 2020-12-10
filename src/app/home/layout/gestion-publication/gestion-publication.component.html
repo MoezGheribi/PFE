@@ -1,0 +1,71 @@
+<!--start-top-serch-->
+<div id="search">
+  <input type="text" [(ngModel)]="args1" placeholder="Recherche..."/>
+  <button type="submit" class="tip-bottom" title="Search" ><i class="icon-search icon-white"></i></button>
+</div>
+<!--close-top-serch-->
+<!--main-container-part-->
+<div id="content">
+
+  <div class="container-fluid">
+    <hr>
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-th"></i> </span>
+            <h5>Gestion Publication</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <table class="table table-bordered table-striped">
+              <thead>
+              <tr>
+                <th>nom_conducteur</th>
+                <th>prenom_conducteur</th>
+                <th>LieuDepart</th>
+                <th>LieuArivee</th>
+                <th>Commentaire</th>
+                <th>Marque Voiture</th>
+<!--
+                <th>Matricule</th>
+-->
+                <th>NbrPlaces</th>
+                <th>Date</th>
+                <th>Prix</th>
+                <th>remove</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr class="odd gradeX" *ngFor="let p of publications | serch1 : args1">
+                <td>{{p.nomconducteur}}</td>
+                <td>{{p.prenomconducteur}}</td>
+                <td>{{p.Trajet.LieuDepart}}</td>
+                <td>{{p.Trajet.LieuArivee}}</td>
+                <td>{{p.Commentaire}}</td>
+                <td>{{p.Voiture.Marque}}</td>
+               <!-- <td>{{p.Voiture.Matricule}}</td>-->
+                <td>{{p.Voiture.NbrPlaces}}</td>
+                <td class="center">{{p.Datevoyage}}</td>
+                <td class="center">{{p.Prix}}</td>
+                <td><a  class="btn btn-danger" href="#myAlert" data-toggle="modal">Supprimer</a></td>
+                <div id="myAlert" class="modal hide">
+                  <div class="modal-header">
+                    <button data-dismiss="modal" class="close" type="button">×</button>
+                    <h3>Supprimer</h3>
+                  </div>
+                  <div class="modal-body">
+                    <p>Vouler vous supprimer cet publication</p>
+                  </div>
+                  <div class="modal-footer"> <a data-dismiss="modal" class="btn btn-primary" (click)="deletePublications(p._id)" >Confirme</a> <a data-dismiss="modal" class="btn" href="#">Retour</a> </div>
+                </div>
+
+              </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

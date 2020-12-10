@@ -1,0 +1,52 @@
+<!--start-top-serch-->
+<div id="search">
+  <input type="text" [(ngModel)]="args2"  placeholder="Recherche..."/>
+  <button type="submit" class="tip-bottom" title="Search" ><i class="icon-search icon-white"></i></button>
+</div>
+<!--close-top-serch-->
+<!--main-container-part-->
+<div id="content">
+
+  <div class="container-fluid">
+    <hr>
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-th"></i> </span>
+            <h5>Boite Réception</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <table class="table table-bordered table-striped">
+              <thead>
+              <tr>
+                <th>Sujet</th>
+                <th>Contenu</th>
+                <th>remove</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr class="odd gradeX" *ngFor="let m of Messages | serch2 : args2" >
+                <td>{{m.Sujet}}</td>
+                <td class="center">{{m.Contenu}}</td>
+                <td><a  class="btn btn-danger" href="#myAlert" data-toggle="modal">Supprimer</a></td>
+                <div id="myAlert" class="modal hide">
+                  <div class="modal-header">
+                    <button data-dismiss="modal" class="close" type="button">×</button>
+                    <h3>Supprimer</h3>
+                  </div>
+                  <div class="modal-body">
+                    <p>Vouler vous supprimer cet message</p>
+                  </div>
+                  <div class="modal-footer"> <a data-dismiss="modal" class="btn btn-primary" (click)="deleteMessages(m._id)" >Confirm</a> <a data-dismiss="modal" class="btn" href="#">Cancel</a> </div>
+                </div>
+              </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

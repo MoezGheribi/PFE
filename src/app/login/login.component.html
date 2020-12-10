@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Blasa</title><meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/css/bootstrap-responsive.min.css" />
+  <link rel="stylesheet" href="assets/css/matrix-login.css" />
+  <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+<div id="loginbox">
+  <div *ngIf="test">
+  <form  class="form-vertical">
+    <div class="control-group normal_text"> <h3><img src="assets/img/logo.png" alt="Logo" /></h3></div>
+    <div class="control-group">
+      <div class="controls">
+        <div class="main_input_box">
+          <span class="add-on bg_lg"><i class="icon-user"> </i></span>
+          <input type="text" placeholder="Adresse e-mail"  name="Email" required [(ngModel)]="Email" />
+        </div>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        <div class="main_input_box">
+          <span class="add-on bg_ly"><i class="icon-lock"></i></span>
+          <input type="password" placeholder="Mot de passe"  name="Password" required [(ngModel)]="Password" />
+        </div>
+      </div>
+    </div>
+    <div class="form-actions">
+      <span class="pull-left"><a type="submit" (click)="go()" class="flip-link btn btn-info"  id="to-recover">Mot de passe oubliée</a></span>
+      <span class="pull-right"><a type="submit"  class="btn btn-success" (click)="login(Email,Password)"> Connexion</a></span>
+    </div>
+  </form>
+  </div>
+  <div *ngIf="!test">
+  <form  class="form-vertical">
+    <p class="normal_text">Entrez votre adresse e-mail ci-dessous et nous vous enverrons des instructions pour récupérer un mot de passe.</p>
+
+    <div class="controls">
+      <div class="main_input_box">
+        <span class="add-on bg_lo"><i class="icon-envelope"></i></span>
+        <input type="text" placeholder="E-mail addresse" />
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <span class="pull-left"><a (click)="goback()" class="flip-link btn btn-success" id="to-login">&laquo; Retour à connexion</a></span>
+      <span class="pull-right"><a class="btn btn-info">Recover </a></span>
+    </div>
+  </form>
+  </div>
+</div>
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/matrix.login.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!--start-top-serch-->
+<div id="search">
+  <input type="text" [(ngModel)]="args" placeholder="Recherche..."/>
+  <button type="submit" class="tip-bottom" title="Search" ><i class="icon-search icon-white"></i></button>
+</div>
+<!--close-top-serch-->
+<!--main-container-part-->
+<div id="content">
+
+
+  <div class="container-fluid">
+    <hr>
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-th"></i> </span>
+            <h5>Gestion Voyageurs</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <table class="table table-bordered table-striped">
+              <thead>
+              <tr>
+
+
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Adresse</th>
+                <th>NumTel</th>
+                <th>CIN</th>
+                <th>remove</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr class="odd gradeX" *ngFor="let v of voyageurs | serch : args">
+
+                <td>{{v.Nom}}</td>
+                <td>{{v.Prenom}}</td>
+                <td class="center">{{v.Email}}</td>
+                <td>{{v.Adresse}}</td>
+
+                <td class="center">{{v.NumTel}}</td>
+                <td class="center">{{v.CIN}}</td>
+                <td>
+
+
+                  <delete (deleteFun)="deleteVoyageurs(v._id)" [pk]='v._id'  ></delete>              </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
